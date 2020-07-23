@@ -56,6 +56,7 @@ class BurgerBuilder extends Component {
       ingredients: updatedIngredients,
       totalPrice: newPrice, 
       purchasable: false,
+      purchasing: false,
     });
 
     this.updatePurchaseState(updatedIngredients);
