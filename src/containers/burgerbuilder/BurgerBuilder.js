@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Aux from '../../hoc/Aux/Aux';
-
+import axios from '../../axios-orders';
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/modal/modal';
@@ -15,7 +15,7 @@ const INGREDIENT_PRICES = {
 
 class BurgerBuilder extends Component {
   constructor(props) {
-    super(props);
+    super();
 
     this.state = {
       ingredients: {
@@ -96,7 +96,7 @@ class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
-    alert('you continue');
+    axios.post('/orders.json')
   }
 
   render() {
