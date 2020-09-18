@@ -96,7 +96,23 @@ class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
-    axios.post('/orders.json')
+    const order = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice,
+      customer: {
+        name: 'j money',
+        address: {
+          street: 'setreet street',
+          zipcode: '888888',
+          country: 'usa'
+        },
+        email: 'test@test.com'
+      },
+      deliveryMethod: 'fastest'
+    }
+    axios.post('/orders.json', order)
+    .then(response => console.log(response))
+    .catch((err) => console.log(err))
   }
 
   render() {
