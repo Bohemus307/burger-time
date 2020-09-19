@@ -5,14 +5,20 @@ import Aux from "../Aux/Aux";
 
 const withErrorHandler = (WrappedComponent, axios) => {
   return class extends Component {
-    state = {
-      error: null,
-    };
-    componentDidMount() {
+    constructor(props) {
+      super()
+
+      this.state = {
+        error: null,
+      };
+    }
+
+    getStateFromDb = () => {
       axios.interceptors.request.use((req) => {
         this.setState({ error: null });
         return req;
       });
+
       axios.interceptors.response.use(
         (res) => res,
         (error) => {
@@ -21,6 +27,10 @@ const withErrorHandler = (WrappedComponent, axios) => {
           });
         }
       );
+    }
+
+    componentDidMount() {
+      this.getStateFromDb();
     }
 
     errorConfimerdHandler = () => {
