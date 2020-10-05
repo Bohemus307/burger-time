@@ -27,9 +27,9 @@ class Layout extends React.Component {
       <Aux>
         <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
         <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerCloseHandler} />
-        <main className={classes.Content}>
-          {this.props.children}
-        </main>
+          <main className={classes.Content}>
+            {this.props.children}
+          </main>
       </Aux>
     );
   
