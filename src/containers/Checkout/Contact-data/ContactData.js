@@ -8,14 +8,59 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends Component {
-  state = {
-    name: '',
-    email: '',
-    address: {
-      street:'',
-      postalCode: ''
+  state = { 
+    orderForm: {
+      name: {
+        elementType: 'imput',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Name'
+        },
+        value: ''
+      },
+      address: {
+      street: {
+        elementType: 'imput',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Street'
+        },
+        value: ''
+      },
+      zipcode: {
+        elementType: 'imput',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Zipcode'
+        },
+        value: ''
+      },
+      country: {
+        elementType: 'imput',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Country'
+        },
+        value: ''
+      },
+      email: {
+        elementType: 'email',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Email'
+        },
+        value: ''
+      },
+      deliveryMethod: {
+        elementType: 'select',
+        elementConfig: {
+          options: [{value: 'fastest', displayValue: 'Fastest'}, {value: 'slowest', displayValue: 'Slowest'}]
+        },
+        value: ''
+      }
     },
     loading: false,
+    }
   }
 
   orderHandler = (event) => {
@@ -25,16 +70,6 @@ class ContactData extends Component {
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
-      customer: {
-        name: 'j money',
-        address: {
-          street: 'street street',
-          zipcode: '888888',
-          country: 'usa'
-        },
-        email: 'test@test.com'
-      },
-      deliveryMethod: 'fastest'
     }
     axios.post('/orders.json', order)
     .then(response => {
@@ -50,10 +85,10 @@ class ContactData extends Component {
   render() {
     let form = (
       <form>
-        <Input inputType="input" className={classes.Input} type='text' name='name' placeholder='your Name' />
-        <Input inputType="input" className={classes.Input} type='text' name='email' placeholder='your Mail' />
-        <Input inputType="input" className={classes.Input} type='text' name='street' placeholder='Street' />
-        <Input inputType="input" className={classes.Input} type='text' name='postal' placeholder='Postal Code' />
+        <Input inputtype="input" className={classes.Input} type='text' name='name' placeholder='your Name' />
+        <Input inputtype="input" className={classes.Input} type='text' name='email' placeholder='your Mail' />
+        <Input inputtype="input" className={classes.Input} type='text' name='street' placeholder='Street' />
+        <Input inputtype="input" className={classes.Input} type='text' name='postal' placeholder='Postal Code' />
         <Button btnType='Success' clicked={this.orderHandler}>ORDER</Button>
       </form>
     );
