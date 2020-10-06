@@ -27,7 +27,7 @@ class ContactData extends Component {
       customer: {
         name: 'j money',
         address: {
-          street: 'setreet street',
+          street: 'street street',
           zipcode: '888888',
           country: 'usa'
         },
