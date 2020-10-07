@@ -18,7 +18,6 @@ class ContactData extends Component {
         },
         value: ''
       },
-      address: {
       street: {
         elementType: 'input',
         elementConfig: {
@@ -54,13 +53,15 @@ class ContactData extends Component {
       deliveryMethod: {
         elementType: 'select',
         elementConfig: {
-          options: [{value: 'fastest', displayValue: 'Fastest'}, {value: 'slowest', displayValue: 'Slowest'}]
+            options: [
+              {value: 'fastest', displayValue: 'Fastest'}, 
+              {value: 'slowest', displayValue: 'Slowest'}
+            ]
         },
         value: ''
       }
     },
     loading: false,
-    }
   }
 
   orderHandler = (event) => {
@@ -91,10 +92,9 @@ class ContactData extends Component {
         config: this.state.orderForm[key]
       })
     }
-
+    
     let form = (
       <form>
-        <Input elementType="..." className={classes.Input} elementConfig="..." value="..." />
         {formElementsArray.map(formElement => (
             <Input 
               elementType={formElement.config.elementType} 
